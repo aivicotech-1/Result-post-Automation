@@ -1,0 +1,26 @@
+:root {
+  --navy: #1e3fa8;
+  --navy-dark: #17307f;
+  --green: #16b67a;
+  --blue: #3b82f6;
+  --sky-bg: #e8f2fd;
+  --sky-blob: #bfddf7;
+  --card: #ffffff;
+  --card-border: #b9d4f5;
+  --star-on: #fbbf24;
+  --star-off: #c5cce0;
+  --score-bg: #fdf1dc;
+  --label-grey: #5c5f80;
+  --python-blue: #3776f0;
+  --python-yellow: #ffd43b;
+  --success: #1bb475;
+  --danger: #dc4c64;
+  --text: #1f2a44;
+  --shadow: 0 18px 45px rgba(30, 63, 168, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --font-heading: 'Baloo 2', 'Nunito', 'Poppins', system-ui, sans-serif;
+  --font-body: 'Nunito', 'Poppins', system-ui, sans-serif;
+}

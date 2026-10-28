@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skill2Success Result Generator</title>
+    <meta
+      name="description"
+      content="Generate polished Skill2Success result posts for students in bulk."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">S²</div>
+          <div>
+            <div class="brand-name">SKILL²</div>
+            <div class="brand-sub">Result Generator</div>
+          </div>
+        </div>
+        <button id="delete-all-btn" class="btn btn-danger btn-small" type="button">
+          Delete all data
+        </button>
+      </header>
+
+      <main class="app-main">
+        <nav class="stepper" aria-label="Application flow">
+          <button type="button" class="step is-active" data-step="0">
+            <span class="step-number">1</span>
+            <span>Upload</span>
+          </button>
+          <button type="button" class="step" data-step="1">
+            <span class="step-number">2</span>
+            <span>Settings</span>
+          </button>
+          <button type="button" class="step" data-step="2">
+            <span class="step-number">3</span>
+            <span>Preview</span>
+          </button>
+          <button type="button" class="step" data-step="3">
+            <span class="step-number">4</span>
+            <span>Generate &amp; Share</span>
+          </button>
+        </nav>
+
+        <section class="step-panel is-visible" data-step-panel="0">
+          <div class="panel-card upload-card">
+            <div class="dropzone" id="dropzone" tabindex="0" aria-label="Upload student data file">
+              <div class="dropzone-icon">⬆️</div>
+              <h2>Upload quiz data</h2>
+              <p>Accepted file types: CSV, Excel, PDF, Word, PowerPoint, and image files. For fast automatic result processing, spreadsheet files are recommended.</p>
+              <div class="dropzone-actions">
+                <label class="btn btn-primary" for="file-input">Choose file</label>
+                <input id="file-input" type="file" accept=".csv,.xlsx,.xls,.pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,image/*,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation" hidden />
+                <button id="download-sample-btn" class="btn btn-secondary" type="button">Download sample CSV</button>
+              </div>
+            </div>
+
+            <div class="instruction-panel">
+              <h3>Upload instructions</h3>
+              <div id="file-status" class="file-status">No file selected yet. Upload a spreadsheet for instant student parsing, or upload a document and map the data manually afterward.</div>
+              <textarea id="upload-instructions" class="instruction-box" rows="5" placeholder="Auto-generated instruction notes appear here once a file is selected...">Upload a student file and the app will automatically extract the student names and marks. If you upload a PDF, Word, or PPT file, the system accepts it and keeps it ready for manual mapping or reference.</textarea>
+            </div>
+
+            <div class="quick-add-card">
+              <h3>Add one student</h3>
+              <form id="manual-student-form" class="inline-form">
+                <input name="name" type="text" placeholder="Student name" required />
+                <input name="marks" type="number" placeholder="Marks" step="any" required />
+                <input name="phone" type="tel" placeholder="Phone (optional)" />
+                <input name="rollNo" type="text" placeholder="Roll no (optional)" />
+                <button class="btn btn-primary" type="submit">Add student</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step-panel="1">
+          <div class="panel-card settings-card">
+            <div class="form-grid">
+              <label>
+                <span>Course name</span>
+                <input id="course-name" type="text" value="Python Programming Course" />
+              </label>
+              <label>
+                <span>Quiz title</span>
+                <input id="quiz-title" type="text" value="Quiz 1 Report" />
+              </label>
+              <label>
+                <span>Total marks</span>
+                <input id="total-marks" type="number" value="15" min="1" step="1" />
+              </label>
+              <label>
+                <span>Date</span>
+                <input id="quiz-date" type="date" />
+              </label>
+              <label>
+                <span>Star rule</span>
+                <select id="star-rule-mode">
+                  <option value="default">Default 1-5 stars</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </label>
+              <label>
+                <span>Post theme</span>
+                <select id="theme-template">
+                  <option value="sky-blue">Sky Blue</option>
+                  <option value="green">Green Accent</option>
+                  <option value="royal">Royal Blue</option>
+                  <option value="sunset">Sunset</option>
+                </select>
+              </label>
+              <label>
+                <span>Background start</span>
+                <input id="theme-bg-start" type="color" value="#edf5ff" />
+              </label>
+              <label>
+                <span>Background end</span>
+                <input id="theme-bg-end" type="color" value="#ffffff" />
+              </label>
+              <label>
+                <span>Accent color</span>
+                <input id="theme-accent" type="color" value="#1E3FA8" />
+              </label>
+              <label>
+                <span>Feedback line</span>
+                <label class="switch">
+                  <input id="feedback-toggle" type="checkbox" checked />
+                  <span class="slider"></span>
+                </label>
+              </label>
+              <div id="custom-star-rules" class="form-grid" style="grid-column: 1 / -1; display: none;">
+                <label><span>1 star up to (%)</span><input id="star-max-1" type="number" min="1" max="99" value="20" /></label>
+                <label><span>2 stars up to (%)</span><input id="star-max-2" type="number" min="1" max="99" value="40" /></label>
+                <label><span>3 stars up to (%)</span><input id="star-max-3" type="number" min="1" max="99" value="60" /></label>
+                <label><span>4 stars up to (%)</span><input id="star-max-4" type="number" min="1" max="99" value="80" /></label>
+              </div>
+            </div>
+            <div class="settings-actions">
+              <button id="save-settings-btn" type="button" class="btn btn-primary">Save settings</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step-panel="2">
+          <div class="panel-card preview-layout">
+            <div class="table-wrap">
+              <div class="toolbar">
+                <input id="table-search" type="search" placeholder="Search student..." />
+                <button id="select-all-btn" type="button" class="btn btn-secondary btn-small">Select all</button>
+              </div>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th><input id="header-select" type="checkbox" /></th>
+                      <th>Name</th>
+                      <th>Marks</th>
+                      <th>Stars</th>
+                      <th>Phone</th>
+                      <th>Feedback</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="student-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="preview-card">
+              <div class="preview-header">
+                <button id="prev-preview-btn" type="button" class="icon-btn" aria-label="Previous student">←</button>
+                <span id="preview-counter">0 / 0</span>
+                <button id="next-preview-btn" type="button" class="icon-btn" aria-label="Next student">→</button>
+              </div>
+              <canvas id="preview-canvas" width="1080" height="1080"></canvas>
+              <div class="preview-actions">
+                <button id="download-single-btn" type="button" class="btn btn-primary">Download PNG</button>
+                <button id="download-single-pdf-btn" type="button" class="btn btn-secondary">Download PDF</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step-panel="3">
+          <div class="panel-card generate-panel">
+            <div id="status-summary" class="status-summary">No data loaded yet.</div>
+            <div class="progress-wrap">
+              <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+              </div>
+              <span id="progress-label">0%</span>
+            </div>
+            <div class="generate-actions">
+              <button id="generate-btn" class="btn btn-primary" type="button">Generate All Posts</button>
+              <button id="cancel-btn" class="btn btn-secondary" type="button">Cancel</button>
+              <button id="download-zip-btn" class="btn btn-secondary" type="button">Download ZIP</button>
+              <button id="download-pdf-btn" class="btn btn-secondary" type="button">Download PDF</button>
+            </div>
+            <div class="export-grid">
+              <button id="export-links-btn" class="btn btn-secondary" type="button">Export Links CSV</button>
+              <button id="whatsapp-queue-btn" class="btn btn-secondary" type="button">WhatsApp queue</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

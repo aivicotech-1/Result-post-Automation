@@ -1,0 +1,86 @@
+.upload-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 18px;
+}
+
+.instruction-panel {
+  border: 1px solid var(--card-border);
+  background: rgba(232, 242, 253, 0.38);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instruction-box {
+  width: 100%;
+  border: 1px solid rgba(30, 63, 168, 0.15);
+  border-radius: 14px;
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+}
+
+.file-status {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(22, 182, 122, 0.09);
+  color: var(--navy);
+  border: 1px solid rgba(22, 182, 122, 0.12);
+  line-height: 1.5;
+}
+
+.quick-add-card {
+  border: 1px solid rgba(30,63,168,0.1);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(232,242,253,0.25);
+}
+
+.settings-actions {
+  margin-top: 18px;
+}
+
+.generate-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .preview-layout,
+  .upload-card {
+    grid-template-columns: 1fr;
+  }
+
+  .stepper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    padding: 0 12px;
+  }
+
+  .topbar {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand-name {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .stepper {
+    grid-template-columns: 1fr;
+  }
+}
